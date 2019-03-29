@@ -1,25 +1,46 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import Componente from './componente';
 
 class App extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      clicks: props.clicks
+    }
+  }
+
   render() {
+    const { clicks } = this.state;
+
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
+      <div>
+        <Componente 
+        />
+        <Componente 
+          titulo="Con título"
+        />
+        <Componente 
+          color="green"
+        />
+        <Componente 
+          color="blue"
+          items={[1, 2 , 3]}
+        />
+        <div>
+          <h1>Contador</h1>
+          <span>{clicks}</span>
+          <br />
+          <button 
+            onClick={() => {
+              this.setState({
+                clicks : clicks + 1
+              })
+            }}
           >
-            Learn React
-          </a>
-        </header>
+          Clikc me
+          </button>
+        </div>
       </div>
     );
   }
